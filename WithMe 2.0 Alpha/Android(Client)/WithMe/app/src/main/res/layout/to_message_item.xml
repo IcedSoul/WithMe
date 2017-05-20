@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:paddingRight="5dp"
+    android:gravity="right|center_vertical">
+
+    <LinearLayout
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="right">
+        <TextView
+            android:id="@+id/to_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14:14"
+            android:paddingRight="20dp" />
+        <TextView
+            android:id="@+id/to_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|left"
+            android:textSize="16sp"
+            android:text="你好"
+            android:background="@drawable/chatto_bg_normal"/>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/to_user_icons"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/photo"
+        />
+</LinearLayout>

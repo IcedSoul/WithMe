@@ -1,0 +1,328 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>WithMe</groupId>
+  <artifactId>WithMe</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>WithMe</name>
+  <description>
+  <!-- 
+  		1.2017/1/20，进行第三次代码重构，具体变更如下：
+  			（1）项目结构由原来的MyEclipse风格的Web项目变为Maven风格的Web项目
+  			（2）使用Maven来管理依赖，代替之前的手工导入依赖的模式
+  		  	（3）保留原有的已经完成的登录注册模块以及添加好友模块的代码（数据库、视图均保留）
+  		  	（4）重新导入各依赖包，JavaEE版本变为7.0，Spring、SpringMVC，Hibernate，jstl版本均有变动
+  		  	（5）下一步工作将是更改配置文件，确保项目可以正常工作
+  		2.2017/1/21,代码重构完成，之前已完成的功能已经能正常运行，遗留问题以及下一步任务如下：
+  			（1）因为编码问题，之前代码中我留下的中文注释均变成乱码，之后可能会重新添加注释
+  			（2）虽然依赖都部署了，但是很多依赖包的作用不是很了解（可能导入了很多不需要的jar），之后有时间需要查资料找到每一个包对应的作用，去掉多余的依赖
+  			（3）调整结构后添加了jdbc.properties资源文件，需要在配置文件中进行配置
+  			（4）下一步任务，使用websocket完成通信模块
+  			（5）完成通信模块之后，需要对数据库进行重构（比如User表结构等等）
+  		3.2017/1/22,继续进行通信模块的编写，具体进度进行到访问静态资源，可见Server.java注释27
+  			确定了message的json格式，如下：
+  				"message"{
+  					"from": "xxxx",
+  					"to":["xxx"],
+  					"content":"xxxxx",
+  					"type":0,
+  					"time":"xxxx.xx.xx xx.xx.xx"
+  				}
+  			预计准备对数据库进行完全重构，即完成2.（5）
+  			2.（5）已完成
+  		4.2017/1/23,数据库重构工作完成，下一步：完善后台代码，开始前端编写
+  		5.2017/1/30,前端工作基本完成，具体情况见 项目进度记录.doc，下一步：结合后端与前端，完善功能。
+  		6.2017/2/07，开始部署项目，中间winscp无法上传文件，解决方法http://blog.csdn.net/mazicwong/article/details/52741306
+   -->
+   </description>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>4.2.4.RELEASE</spring.version>
+    <mysql-jdbc.version>5.1.38</mysql-jdbc.version>
+    <json.version>2.2.3</json.version>
+    <log4j.version>2.5</log4j.version>
+    <slf4j.version>1.7.21</slf4j.version>
+  </properties>
+  <dependencies>
+  	<!-- JavaEE 7.0 配置 -->
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>7.0</version>
+      <scope>provided</scope>
+      <!-- 编译时不需要发布,否则在集成maven的tomcat插件会出现错误 ，下同理-->
+    </dependency>
+    <!-- JavaEE 7.0配置结束 -->
+    
+    <!-- WebSocket配置开始 -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-websocket</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-messaging</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    <!--  
+    <dependency>
+    	<groupId>javax.websocket</groupId>
+    	<artifactId>javax.websocket-api</artifactId>
+    	<version>1.1</version>
+	</dependency>
+	-->
+    <!-- WebSocket配置结束 -->
+    
+    <!-- Servlet配置开始 -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.0.1</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>jsp-api</artifactId>
+        <version>2.2</version>
+        <scope>provided</scope>
+    </dependency>
+    <!-- Servlet配置结束 -->
+    
+    <!-- jstl配置开始 -->
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>javax.servlet.jsp.jstl</artifactId>
+      <version>1.2.2</version>
+    </dependency>
+    <!-- jstl配置结束 -->
+    
+    <!-- MySQL驱动配置开始 -->
+    <dependency>
+       <groupId>mysql</groupId>
+       <artifactId>mysql-connector-java</artifactId>
+       <version>${mysql-jdbc.version}</version>
+    </dependency>
+    <!-- MySQL驱动配置结束 -->
+    
+    <!-- json 配置开始 -->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.2.7</version>
+    </dependency>
+    <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20150729</version>
+    </dependency>
+    <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl</artifactId>
+        <version>1.9.13</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>${json.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${json.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-annotations</artifactId>
+        <version>${json.version}</version>
+    </dependency>
+   	<!-- json 配置结束 -->
+   	
+   	<!-- slf4j 配置开始,slf4j-api是核心包 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- java.util.logging转换成为slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!--核心log4j2jar包-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <!--用于与slf4j保持桥接-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <!--web工程需要包含log4j-web，非web工程不需要-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <!-- 用于与jul桥接 -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-jul</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <!-- slf4j 配置结束 -->
+    	
+    	<!-- commons 配置开始 -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
+        </dependency>
+        <!-- commons  配置结束 -->
+        
+        <!-- Spring  配置开始 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-aspects</artifactId>
+    		<version>${spring.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons-core</artifactId>
+            <version>1.4.1.RELEASE</version>
+        </dependency>
+        <!-- Spring 配置结束 -->
+        
+        <!-- Hibernate配置开始 -->
+    	<dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-core</artifactId>
+   			<version>4.3.8.Final</version>
+		</dependency>
+		<!-- Hibernate配置结束 -->
+    	
+  </dependencies>
+  <build>
+  
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <version>3.1</version>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+      <!-- Tomcat7 -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>8080</port>
+                    <path>/WithMe</path>
+                    <uriEncoding>utf-8</uriEncoding>
+                    <!--<server>tomcat7</server>-->
+                </configuration>
+            </plugin>
+    </plugins>
+  </build>
+</project>

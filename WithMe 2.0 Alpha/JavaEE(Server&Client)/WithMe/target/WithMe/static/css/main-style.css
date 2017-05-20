@@ -1,0 +1,310 @@
+.icon {
+	width: auto;
+	height: auto;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	cursor:pointer;
+}
+
+.photoBox {
+	width: 80px;
+	height: 80px;
+	padding: 5px; 
+}
+
+.photo {
+	width: 70px;
+	height: 70px;
+}
+
+.relation {
+	width: 100%;
+	height: 100%;
+}
+
+.relationSingle {
+	width: 100%;
+	height: 80px;
+	position: relative;
+	background-color: #fff;
+	cursor:pointer;
+	overflow: hidden;
+	transition: all 0.3s;
+
+}
+.relationSingle:hover {
+	background-color: #ddd;
+	transition: all 0.3s;
+}
+
+.relationSingle:hover .onlineStatus{
+	opacity: 0;
+	transition: all 0.5s;
+}
+.relationSingle:hover .offlineStatus{
+	opacity: 0;
+	transition: all 0.5s;
+}
+
+.list {
+	font-family: Microsoft YaHei;
+	font-size: 20px;
+	position: absolute;
+	left: 30%;
+	top: 20%;
+}
+
+.functions{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	font-family: Microsoft YaHei;
+}
+.justifile {
+	width: 50%;
+	font-family: Microsoft YaHei;
+}
+.justifile a{
+	color: #000;
+}
+.onlineStatus{
+	font-family: Microsoft YaHei;
+	font-size: 18px;
+	position: absolute;
+	right: 12%;
+	top: 35%;
+	opacity: 0;
+	color: #40de5a;
+}
+.offlineStatus{
+	font-family: Microsoft YaHei;
+	font-size: 18px;
+	position: absolute;
+	right: 12%;
+	top: 35%;
+	opacity: 0;
+	color: #888;
+}
+
+.chatWith {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	font-family: Microsoft YaHei;
+}
+.chatWith hr{
+	margin-top:0;
+	margin-bottom: 0;
+	border-top-color: #ccc;
+}
+
+.output {
+	width: 100%;
+	height: 60%;
+	padding-bottom:10px;
+	position: relative;
+	transition: all 0.5s;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.output::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+	background-color: #fff;
+}
+
+.output::-webkit-scrollbar
+{
+	width: 4px;
+	background-color: #555;
+}
+
+.output::-webkit-scrollbar-thumb
+{
+	background-color: #aaa;
+}
+
+.options {
+	width: 100%;
+	height: 6%;
+	position: relative;
+}
+.smallOffset {
+	margin-right:10px;
+}
+.input {
+	width: 100%;
+	height: 34%;
+	position: relative;
+}
+textarea.form-control {
+	height: 100%;
+	font-family:18px;
+}
+
+.option {
+	width: auto;
+	height: 100%;
+}
+.singleMessage {
+	position: relative;
+	width: 100%;
+	height: auto;
+	padding-top:5px;
+	margin-left:0;
+	margin-right:0;
+	transition: all 0.3s;
+}
+.iconsLeft{
+	margin: 0 auto;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-right: 0px;
+}
+.iconsRight {
+	margin: 0 auto;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 0px;
+}
+
+.iconssLeft,.iconssRight{
+	width: 40px;
+	height: 40px;
+	
+}
+.iconssLeft {
+	float: right;
+}
+.iconssRight {
+	float: left;
+}
+.timePositionLeft {
+	padding-left: 0; 
+}
+.timePositionRight {
+	padding-right: 0;
+}
+
+.timeLeft {
+	float: left;
+	font-size: 8px;
+	padding-left: 0;
+}
+.timeRight {
+	float: right;
+	font-size: 8px;
+	padding-right:0;
+}
+.arrowBoxLeft {
+	float: left;
+	width:auto;
+	height: auto;
+	position: relative;
+	background: #eee;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-radius: 5px;
+}
+.arrowBoxRight {
+	float: right;
+	width:auto;
+	height: auto;
+	position: relative;
+	background: #eee;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-radius: 5px;
+}
+.hidden {
+	display:none;
+}
+.addFriend {
+	width:100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.addFriendBox {
+	 width: 100%;
+}
+.addFriendRow {
+	width:100%;
+	height:240px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display:block
+}
+.addFriendImgBox {
+	 padding-top: 10px;
+}
+.addFriendImg {
+	 width: 180px;
+	 height: 180px
+}
+.addFriendInfo {
+	 font-family: Microsoft YaHei;
+	 font-size: 16px; 
+	 padding-top:8px;
+}
+.addFriendTextArea {
+	font-size: 12px;
+	resize:none;
+}
+.notice {
+	width:100%;
+	height:100%;
+	font-family:Microsoft YaHei;
+	font-size: 18px;
+	overflow-x: hidden;
+	overflow-y:hidden;
+	cursor: pointer;"
+}
+.noticePosition {
+	padding-top: 5px;
+}
+
+/*创建群组窗口对应的css*/
+.createGroup {
+	width:100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+.createGroupBox {
+	 width: 100%;
+}
+.createGroupRow {
+	width:100%;
+	height:240px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display:block
+}
+.createGroupImgBox {
+	 padding-top: 10px;
+}
+.createGroupImg {
+	 width: 180px;
+	 height: 180px
+}
+.createGroupInfo {
+	 font-family: Microsoft YaHei;
+	 font-size: 16px; 
+	 padding-top:8px;
+}
+.createGroupTextArea {
+	font-size: 12px;
+	resize:none;
+}
+.groupInviteList {
+	overflow-x:hidden;
+	overflow-y:auto;
+	vertical-align: middle;
+	text-align: center
+}
