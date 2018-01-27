@@ -1,10 +1,7 @@
 # WithMe 1.0 Alpha
 &nbsp;&nbsp;这个项目是使用JavaEE开发的一个多人在线即时聊天系统。
-## 在线演示地址
-&nbsp;&nbsp;182.254.214.252:8080/WithMe
 ## 运行截图
-![登录](http://i1.piimg.com/588926/d76a12bfd117d3dd.png)
-![聊天](http://i1.piimg.com/588926/8e208ea23608202e.png)
+![聊天](http://ou7jocypf.bkt.clouddn.com/18-1-27/37562533.jpg)
 ## 主要功能
 &nbsp;&nbsp;1.注册/登录<br/>
 &nbsp;&nbsp;2.搜索用户，查看用户信息，发送好友申请，同意好友申请<br/>
