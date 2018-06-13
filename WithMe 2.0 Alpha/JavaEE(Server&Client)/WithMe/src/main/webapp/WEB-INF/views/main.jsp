@@ -36,7 +36,7 @@
 		//获取服务端地址
 		var ws = null;
 		//ws = "ws://localhost:20818/${currentUser.userId}";
-		ws = "ws://182.254.214.252:20818/${currentUser.userId}";
+		ws = "ws://120.79.92.126:20818/${currentUser.userId}";
 		var websocket = null;
 
 		//判断当前浏览器是否支持WebSocket
@@ -895,7 +895,6 @@
 		//创建群的窗口
 		var createGroupIndex = null;
 		function createGroup(){
-		//此处留待添加群头像上传的功能
         var html = '<div class="createGroup">'
           + '<div class="container createGroupBox">'
           + '<div class="row createGroupRow">'
