@@ -898,7 +898,6 @@
 		//创建群的窗口
 		var createGroupIndex = null;
 		function createGroup(){
-		//此处留待添加群头像上传的功能
         var html = '<div class="createGroup">'
           + '<div class="container createGroupBox">'
           + '<div class="row createGroupRow">'
