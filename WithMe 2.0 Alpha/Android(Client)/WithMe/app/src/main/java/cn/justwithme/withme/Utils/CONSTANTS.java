@@ -8,8 +8,8 @@ package cn.justwithme.withme.Utils;
 
 public class CONSTANTS {
     //服务器地址
-    public static String address = "http://182.254.214.252:8080/WithMe";
-    public static String wsAddress = "ws://182.254.214.252:20818";
+    public static String address = "http://120.79.92.126/WithMe";
+    public static String wsAddress = "ws://120.79.92.126:20818";
 
     public static String ONLINE_NOTICE = "上线通知（Android端）";
     public static String OFFLINE_NOTICE = "下线通知（Android端）";

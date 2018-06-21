@@ -45,6 +45,10 @@ public class Server extends WebSocketServer {
         //在线人数加一
         addOnLineCount();
         //将当前用户在线状态置1
+        if(userId == "" || userId == null){
+            System.out.println("-------------我正在进行并发测试-----------");
+            return;
+        }
         User user = userService.getUser(Integer.valueOf(userId));
         user.setUserIsOnline(1);
         userService.updateUser(user);
