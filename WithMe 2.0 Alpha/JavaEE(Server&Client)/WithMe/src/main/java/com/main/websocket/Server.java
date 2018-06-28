@@ -38,35 +38,6 @@ public class Server extends WebSocketServer {
 
     @Override
     public void onOpen(WebSocket webSocket, ClientHandshake clientHandshake) {
-<<<<<<< HEAD
-        //获取参数中当前用户id
-        String param = clientHandshake.getResourceDescriptor();
-        userId = param.substring(1,param.length());
-        System.out.println("我建立了连接"+userId);
-        //在线人数加一
-        addOnLineCount();
-        //将当前用户在线状态置1
-        if(userId == "" || userId == null){
-            System.out.println("-------------我正在进行并发测试-----------");
-            return;
-        }
-        User user = userService.getUser(Integer.valueOf(userId));
-        user.setUserIsOnline(1);
-        userService.updateUser(user);
-        //将当前用户id和WebSocket对象加入在线清单
-        onLineList.put(userId,webSocket);
-
-        //检查自己是否有未接收的消息
-        List<Message> messageList =messageService.getMessageUnReceive(Integer.valueOf(userId));
-        if(messageList!=null){
-            for(int i=0;i<messageList.size();i++){
-                Message message = messageList.get(i);
-                String jsonMessage = getMessage(message);
-                sendMessage(onLineList.get(userId),jsonMessage);
-                message.setIsTransport(1);
-                messageService.updateMessage(message);
-=======
-//        synchronized (this) {
             //获取参数中当前用户id
             String param = clientHandshake.getResourceDescriptor();
             userId = param.substring(1, param.length());
@@ -90,10 +61,7 @@ public class Server extends WebSocketServer {
                     message.setIsTransport(1);
                     messageService.updateMessage(message);
                 }
->>>>>>> 70e97919d5454ddfb93f7c2fdf527c3e42e0c64f
             }
-//        }
-
     }
 
     @Override
