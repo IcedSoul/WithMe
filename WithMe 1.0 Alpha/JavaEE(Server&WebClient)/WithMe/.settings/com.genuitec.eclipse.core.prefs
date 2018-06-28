@@ -1,3 +1,0 @@
-eclipse.preferences.version=1
-validator.Checked=src/main/webapp/WEB-INF/views/register.jsp,src/main/webapp/WEB-INF/views/introduction.jsp,src/main/webapp/WEB-INF/views/webSocket.jsp,src/main/webapp/WEB-INF/views/login.jsp,src/main/webapp/WEB-INF/views/chatWithSb.jsp,src/main/webapp/WEB-INF/views/main.jsp,src/main/webapp/static/js
-validator.Unchecked=
