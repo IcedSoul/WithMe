@@ -5,6 +5,7 @@
   <artifactId>justwithme</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
+
   <name>WithMe</name>
   <url>http://maven.apache.org</url>
   <dependencies>

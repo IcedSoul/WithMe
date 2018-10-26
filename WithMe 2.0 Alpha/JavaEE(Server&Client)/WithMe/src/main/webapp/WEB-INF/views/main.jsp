@@ -35,8 +35,8 @@
 	<script type="text/javascript">
 		//获取服务端地址
 		var ws = null;
-		//ws = "ws://localhost:20818/${currentUser.userId}";
-		ws = "ws://120.79.92.126:20818/${currentUser.userId}";
+		ws = "ws://localhost:20818/${currentUser.userId}";
+		<%--ws = "ws://120.79.92.126:20818/${currentUser.userId}";--%>
 		var websocket = null;
 
 		//判断当前浏览器是否支持WebSocket
