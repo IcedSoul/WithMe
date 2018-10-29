@@ -3,6 +3,26 @@
 ## 运行说明
 &emsp;请按照以下方式来让此项目在你的电脑上运行。
 
+```
+1. 使用git命令行执行以下命令将项目下载到本地（需安装Git客户端）
+
+ https://github.com/IcedSoul/WithMe
+ 
+2. 打开WithMe/WithMe 2.0 Alpha/JavaEE(Server&Client)/WithMe,这个目录为项目的根目录（后面说的根目录都是指的这个目录）。当前目录下src/main/resources/withme.sql为建表语句。确认自己本地MySQL已经安装并且正常运行，使用navicat或者命令行在MySQL使用WithMe.sql里面语句新建对应数据库和表。
+
+3. 修改项目根目录下src/main/resources/properties下面database.properties文件，将数据库连接地址，用户名和用户密码修改为自己使用的MySQL数据库。
+
+4. 在命令行下进入项目根目录，执行一下命令（需要先安装Maven工具并且配置好环境变量，如未安装可以百度&Google安装方式。）
+
+mvn clean package -DskipTests
+
+5. 执行成功后即可在根目录下target文件夹下看到WithMe.war文件，将这个文件复制到Tomcat安装（也就是解压）目录下的webapps文件夹内，然后重启tomcat即可。（需下载并且解压Tomcat，版本最好为8.0或以上）
+
+6. 在浏览器访问http://localhost:8080/WithMe来查看效果。
+
+7. 测试请使用两个浏览器注册并且登录两个账号，搜索彼此添加好友来进行聊天。
+```
+
 ## 运行截图
 ![聊天](http://ou7jocypf.bkt.clouddn.com/18-1-27/37562533.jpg)
 ## 主要功能
