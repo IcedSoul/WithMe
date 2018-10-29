@@ -41,7 +41,7 @@ public class Server extends WebSocketServer {
             //获取参数中当前用户id
             String param = clientHandshake.getResourceDescriptor();
             userId = param.substring(1, param.length());
-            sendMessage(webSocket, "WebSocket连接 " + userId + " 建立成功");
+//            sendMessage(webSocket, "WebSocket连接 " + userId + " 建立成功");
             System.out.println("userId: " + userId);
             //在线人数加一
             addOnLineCount();

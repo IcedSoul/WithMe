@@ -1,5 +1,8 @@
 # WithMe 1.0 Alpha
 &nbsp;&nbsp;这个项目是使用JavaEE开发的一个多人在线即时聊天系统。
+## 运行说明
+&emsp;请按照以下方式来让此项目在你的电脑上运行。
+
 ## 运行截图
 ![聊天](http://ou7jocypf.bkt.clouddn.com/18-1-27/37562533.jpg)
 ## 主要功能
