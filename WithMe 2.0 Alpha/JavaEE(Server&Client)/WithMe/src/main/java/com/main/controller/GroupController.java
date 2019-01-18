@@ -36,37 +36,7 @@ public class GroupController {
 	@RequestMapping(value="/createGroup",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> createGroup(String groupName,String groupIntroduction,int groupCreaterId){
-		//群组的groupId在这里随机生成（五位数字）
-		Group group = new Group();
-		String groupId =String.valueOf((int) (Math.random()*100000));
-		while(groupService.getGroup(groupId)!=null){
-			groupId =String.valueOf((int) (Math.random()*100000));
-		}
-		group.setGroupId(groupId);
-		group.setGroupCreaterId(groupCreaterId);
-		group.setGroupIntroduction(groupIntroduction);
-		group.setGroupName(groupName);
-		Date date = new Date();
-		Timestamp timestamp = new Timestamp(date.getTime());
-		group.setGroupCreateTime(timestamp);
-		group.setGroupUserCount(0);
-		group.setGroupMembers("");
-		groupService.addGroup(group);
-		UserGroupRelation userGroupRelation = new UserGroupRelation();
-		//这里两个id不是一回事，一个是逻辑id，一个是业务id，要区分开
-		Group groups = groupService.getGroup(groupId);
-		userGroupRelation.setGroupId(groups.getId());
-		userGroupRelation.setUserId(groupCreaterId);
-		userGroupRelation.setEnterGroupTime(timestamp);
-		userGroupRelation.setGroupUserNickName(userService.getUser(groupCreaterId).getUserNickName());
-		userGroupRelation.setGroupLevel(10);
-		userGroupRelationService.addUserGroupRelation(userGroupRelation);
-		groups.setGroupMembers(String.valueOf(groups.getId()+","+String.valueOf(groupCreaterId)));
-		groups.setGroupUserCount(groups.getGroupUserCount()+1);
-		groupService.updateGroup(groups);
-		Map<String,Object> resoult = new HashMap<String,Object>();
-		resoult.put("resoult", groupId);
-		return resoult;
+		return groupService.addGroup(groupName, groupIntroduction, groupCreaterId);
 	}
 	
 	@RequestMapping(value="/findGroupById",method=RequestMethod.POST)

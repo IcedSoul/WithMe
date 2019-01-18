@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.main.service.UserGroupRelationService;
+import com.main.service.UserRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ public class RegisterController {
 	
 	@Autowired private UserService userService;
 	@Autowired private UserDetailService userDetailService;
+	@Autowired private UserGroupRelationService userGroupRelationService;
+	@Autowired private UserRelationService userRelationService;
 	
 	@RequestMapping(value="/register")
 	public String register(){
@@ -46,6 +50,8 @@ public class RegisterController {
 			userDetail = userDetailService.getUserDetail(userName);
 			User user = new User(userDetail);
 			userService.addUser(user);
+			userRelationService.addUserRelation(0, user.getUserId());
+			userGroupRelationService.addUserGroupRelation(0, user.getUserId());
 			result = "success";
 		}
 		else{

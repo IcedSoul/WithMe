@@ -67,22 +67,7 @@ public class UserGroupRelationController {
 	@RequestMapping(value="/addGroupUsers",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> addGroupUsers(int id,int userId){
-		UserGroupRelation userGroupRelation = new UserGroupRelation();
-		userGroupRelation.setGroupId(id);
-		userGroupRelation.setGroupLevel(0);
-		userGroupRelation.setUserId(userId);
-		Date date = new Date();
-		Timestamp timestamp = new Timestamp(date.getTime());
-		userGroupRelation.setEnterGroupTime(timestamp);
-		userGroupRelation.setGroupUserNickName(userService.getUser(userId).getUserNickName());
-		userGroupRelationService.addUserGroupRelation(userGroupRelation);
-		Group group = groupService.getGroup(id);
-		group.setGroupMembers(group.getGroupMembers()+","+String.valueOf(userId));
-		group.setGroupUserCount(group.getGroupUserCount()+1);
-		groupService.updateGroup(group);
-		Map<String,Object> resoult = new HashMap<String,Object>();
-		resoult.put("resoult", "success");
-		return resoult;
+		return userGroupRelationService.addUserGroupRelation(id,userId);
 	}
 	
 	private static SerializeConfig mapping = new SerializeConfig();  

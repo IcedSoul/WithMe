@@ -62,6 +62,17 @@ public class Server extends WebSocketServer {
                     messageService.updateMessage(message);
                 }
             }
+            Message message = new Message();
+            message.setFrom(0);
+            message.setTo(Integer.valueOf(userId));
+            message.setIsTransport(1);
+            String content = "你好，欢迎尝试WithMe，你有一个初始好友和一个初始群组。初始好友当然是我啦，初始群组是包含所有注册用户的群组，你可以打开瞧一瞧。有任何问题或者意见可以添加QQ群：730490237询问~";
+            String notice = "{\"from\":0,\"to\":["+ userId +"],\"content\":\""+ content +"\",\"type\":0,\"time\":\"2019-01-09 15:31:28\"}";
+            message.setContent(content);
+            message.setType(0);
+            message.setTime(new Timestamp(System.currentTimeMillis()));
+            messageService.addMessage(message);
+            sendMessage(onLineList.get(userId), notice);
     }
 
     @Override

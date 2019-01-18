@@ -30,17 +30,7 @@ public class UserRealtionController {
 	@RequestMapping(value="/buildRelation",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> buildRelation(int userIdA,int userIdB){
-		UserRelation userRelation = new UserRelation();
-		userRelation.setUserIdA(userIdA);
-		userRelation.setUserIdB(userIdB);
-		userRelation.setRelationStatus(1);
-		Date date = new Date();
-		Timestamp timestamp = new Timestamp(date.getTime());
-		userRelation.setRelationStart(timestamp);
-		userRelationService.addUserRelation(userRelation);
-		Map<String,Object> resoult = new HashMap<String,Object>();
-		resoult.put("resoult", "success");
-		return resoult;
+		return userRelationService.addUserRelation(userIdA, userIdB);
 	}
 	
 	@RequestMapping(value="/removeRelation",method=RequestMethod.POST)

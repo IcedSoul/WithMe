@@ -1,7 +1,7 @@
 package com.main.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Timestamp;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +22,19 @@ public class UserRelationServiceImplement implements UserRelationService {
 	}
 
 	@Override
-	public void addUserRelation(UserRelation userRelation) {
+	public Map<String,Object> addUserRelation(int userIdA, int userIdB) {
+		UserRelation userRelation = new UserRelation();
+		userRelation.setUserIdA(userIdA);
+		userRelation.setUserIdB(userIdB);
+		userRelation.setRelationStatus(1);
+		Date date = new Date();
+		Timestamp timestamp = new Timestamp(date.getTime());
+		userRelation.setRelationStart(timestamp);
 		userRelationDao.addUserRelation(userRelation);
+		Map<String,Object> result = new HashMap<String,Object>();
+		result.put("resoult", "success");
+		return result;
+
 	}
 
 	@Override
