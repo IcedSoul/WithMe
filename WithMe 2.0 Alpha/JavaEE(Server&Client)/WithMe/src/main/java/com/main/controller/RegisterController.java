@@ -50,8 +50,8 @@ public class RegisterController {
 			userDetail = userDetailService.getUserDetail(userName);
 			User user = new User(userDetail);
 			userService.addUser(user);
-			userRelationService.addUserRelation(0, user.getUserId());
-			userGroupRelationService.addUserGroupRelation(0, user.getUserId());
+			userRelationService.addUserRelation(1, user.getUserId());
+			userGroupRelationService.addUserGroupRelation(1, user.getUserId());
 			result = "success";
 		}
 		else{

@@ -33,6 +33,7 @@
       </a>
     </div>
 	<script type="text/javascript">
+        layer.alert("你好，欢迎尝试WithMe，你有一个初始好友和一个初始群组。初始好友当然是我啦，初始群组是包含所有注册用户的群组，你可以打开瞧一瞧。有任何问题或者意见可以添加QQ群：730490237交流~也欢迎访问我的个人博客：https://blog.icedsoul.cn");
 		//获取服务端地址
 		var ws = null;
 		<%--ws = "ws://localhost:20818/${currentUser.userId}";--%>
