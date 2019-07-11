@@ -30,7 +30,7 @@ mvn clean package -DskipTests
 ```
 
 ## 运行截图
-![聊天](http://ou7jocypf.bkt.clouddn.com/18-1-27/37562533.jpg)
+![聊天](http://img.icedsoul.cn/img/blog/withme/show.png)
 ## 主要功能
 &nbsp;&nbsp;1.注册/登录<br/>
 &nbsp;&nbsp;2.搜索用户，查看用户信息，发送好友申请，同意好友申请<br/>
