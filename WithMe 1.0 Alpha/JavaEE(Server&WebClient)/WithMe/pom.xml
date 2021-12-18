@@ -40,7 +40,7 @@
     <spring.version>5.2.4.RELEASE</spring.version>
     <mysql-jdbc.version>8.0.16</mysql-jdbc.version>
     <json.version>2.10.1</json.version>
-    <log4j.version>2.13.3</log4j.version>
+    <log4j.version>2.17.0</log4j.version>
     <slf4j.version>1.7.21</slf4j.version>
   </properties>
   <dependencies>
