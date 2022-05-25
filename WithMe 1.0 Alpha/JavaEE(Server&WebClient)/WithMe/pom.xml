@@ -37,7 +37,7 @@
    </description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring.version>5.2.4.RELEASE</spring.version>
+    <spring.version>5.2.22.RELEASE</spring.version>
     <mysql-jdbc.version>8.0.16</mysql-jdbc.version>
     <json.version>2.10.1</json.version>
     <log4j.version>2.13.3</log4j.version>
